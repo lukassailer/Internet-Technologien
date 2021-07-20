@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>😐</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <br>
+    <input type="range" id="h" min="-75" max="75">
+
+    <script>
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        let h = 0;
+
+        draw()
+
+        function draw() {
+            if (canvas.getContext) {
+                ctx.clearRect(0, 0, 400, 400)
+
+                // Outer circle
+                ctx.fillStyle = "yellow"
+                ctx.beginPath();
+                ctx.arc(200, 200, 190, 0, Math.PI * 2, true);
+                ctx.fill()
+                ctx.stroke();
+
+                // Left eye
+                ctx.fillStyle = "black"
+                ctx.beginPath();
+                ctx.arc(100, 130, 25 + 0.1 * h, 0, Math.PI * 2, true);
+                ctx.fill()
+                ctx.stroke();
+
+                // Right eye
+                ctx.beginPath();
+                ctx.arc(270, 130, 25 + 0.1 * h, 0, Math.PI * 2, true);
+                ctx.fill()
+                ctx.stroke();
+
+                // Mouth
+                ctx.beginPath()
+                ctx.moveTo(75, 270);
+                // 150 und 200 statt 200, damit der Mund runder wird
+                ctx.bezierCurveTo(150, 270 + h, 250, 270 + h, 325, 270)
+                ctx.stroke();
+            }
+        }
+
+        document.getElementById("h").addEventListener("input", hChange);
+        function hChange(event) {
+            h = parseInt(event.target.value);
+            draw();
+        }
+    </script>
+</body>
+
+</html>

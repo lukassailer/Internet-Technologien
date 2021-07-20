@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Min-Max-Finder</title>
+</head>
+
+<body>
+    <h1>Min-Max-Finder</h1>
+
+    <script>
+        // Array initialisieren
+
+        var randomNumbers = [];
+
+        for (let i = 0; i < 10; i++) randomNumbers.push(Math.random().toFixed(2));
+
+        // min und max bestimmen
+
+        var max = 0;
+        var min = 1;
+
+        randomNumbers.forEach((element) => {
+            if (element > max) max = element;
+            else if (element < min) min = element;
+        });
+
+        // Ausgabe
+        document.write("Zufallszahlen: " + randomNumbers + "<br>");
+        document.write("Minimum: " + min + "<br>");
+        document.write("Maximum: " + max + "<br>");
+    </script>
+</body>
+
+</html>

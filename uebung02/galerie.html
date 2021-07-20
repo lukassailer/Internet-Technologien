@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        img {
+            filter: grayscale(100);
+            width: 100%;
+            height: 100%;
+        }
+
+        img:hover {
+            filter: grayscale(0)
+        }
+
+        .galery {
+            column-count: 3;
+        }
+
+        @media screen and (max-width: 1000px) {
+            .galery {
+                column-count: 2;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .galery {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="galery">
+        <img src="1.png">
+        <img src="3.png">
+        <img src="6.png">
+        <img src="4.png">
+        <img src="5.png">
+        <img src="7.png">
+        <img src="2.png">
+        <img src="8.png">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚗🚗🚗</title>
+
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        html {
+            overflow: hidden;
+
+            height: 100%;
+            background-image: url("background.svg");
+            background-repeat: repeat-x;
+            background-size: auto 100%;
+        }
+
+        .car {
+            position: absolute;
+            height: 25%;
+            width: 25%;
+            animation-duration: 10s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        .top {
+            top: 65%;
+            right: -25%;
+
+            animation-name: RightToLeft;
+            transform: scaleX(-1)
+        }
+
+        .bottom {
+            top: 75%;
+            left: -25%;
+
+            animation-name: leftToRight;
+            z-index: 1;
+        }
+
+        .delayed {
+            animation-delay: 2s;
+        }
+
+        @keyframes leftToRight {
+            from {
+                left: -25%;
+            }
+
+            to {
+                left: 125%;
+            }
+        }
+
+        @keyframes RightToLeft {
+            from {
+                right: -25%;
+            }
+
+            to {
+                right: 125%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <img src="car1.svg" class="car bottom">
+    <img src="car2.svg" class="car bottom delayed">
+    <img src="car3.svg" class="car top">
+    <img src="car4.svg" class="car top delayed">
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabellenmanipulation</title>
+    <style>
+        td {
+            border: solid black;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="addRow()">Zeile hinzufügen</button>
+    <button onclick="removeRow()">Zeile entfernen</button>
+    <button onclick="addColumn()">Spalte hinzufügen</button>
+    <button onclick="removeColumn()">Spalte entfernen</button>
+    <br />
+    <label id="label">0 x 0</label>
+    <table id="table"></table>
+
+    <script>
+        var columnCount = 0; // column count if no rows exist
+
+        const table = document.getElementById("table"),
+            label = document.getElementById("label");
+
+        // reload Label on all Clicks
+        document.onclick = () =>
+        (label.innerHTML =
+            (table.rows[0]?.cells.length || columnCount) +
+            " x " +
+            table.rows.length);
+
+        function addRow() {
+            const newRow = table.insertRow(-1);
+
+            for (let i = 0; i < table.rows[0].cells.length; i++)
+                newRow.insertCell(-1);
+
+            // apply saved columns for first row of table
+            if (table.rows.length == 1)
+                for (let i = 0; i < columnCount; i++) newRow.insertCell(-1);
+        }
+
+        function removeRow() {
+            if (table.rows.length > 0) {
+                // save column count if all rows are removed
+                if (table.rows.length == 1) columnCount = table.rows[0].cells.length;
+
+                table.deleteRow(-1);
+            }
+        }
+
+        function addColumn() {
+            for (const row of table.rows) row.insertCell(-1);
+
+            if (table.rows.length == 0) columnCount++;
+        }
+
+        function removeColumn() {
+            for (const row of table.rows) row.deleteCell(-1);
+
+            if (table.rows.length == 0 && columnCount > 0) columnCount--;
+        }
+    </script>
+</body>
+
+</html>

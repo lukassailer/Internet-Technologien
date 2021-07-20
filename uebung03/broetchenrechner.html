@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brötchenrechner</title>
+</head>
+
+<body>
+    <h1>Brötchenrechner</h1>
+
+    <form action="" onsubmit="calculatePrice(this)">
+        <label>Anzahl Brötchen: </label>
+        <input type="number" name="amount" id="amount" />
+        <input type="submit" value="Preis Berechnen!" />
+    </form>
+
+    <script>
+        const pricePerUnit = 55;
+
+        function calculatePrice(form) {
+            const amount = form.amount.value;
+
+            if (amount < 0) alert("Sie können uns keine Brötchen verkaufen. 🤨");
+            else {
+                var price = pricePerUnit * amount;
+                if (amount > 10) price *= 0.9;
+
+                // Cent zu Euro
+                price /= 100;
+                price = price.toLocaleString("de-DE", {
+                    style: "currency",
+                    currency: "EUR",
+                });
+
+                alert("Preis für " + amount + " Brötchen: " + price);
+            }
+        }
+    </script>
+</body>
+
+</html>
